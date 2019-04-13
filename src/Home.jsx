@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import {Container, Row, Col,Jumbotron,Button} from 'reactstrap';
+import {Container, Jumbotron} from 'reactstrap';
+import WeatherForm from "./WeatherForm";
+
 class Home extends Component {
   render() {
     return (
@@ -12,6 +14,7 @@ class Home extends Component {
         <p className="lead">This is Weather App made using React</p>
         
       </Jumbotron>
+      <WeatherForm></WeatherForm>
     
         </Container>
     );
