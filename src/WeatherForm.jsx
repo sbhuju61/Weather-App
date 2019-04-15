@@ -3,20 +3,35 @@ import './App.css';
 import {Form, FormGroup, Label,Input,Button} from 'reactstrap';
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.processForm = this.processForm.bind(this);
+  
+
+    
+   
+  }
   render() {
+    const labels = ["Latitude","Longitude"]
+  
     return (
         <Form onSubmit={this.processForm}>
-        <FormGroup>
-          <Label for="city">City</Label>
-          <Input type="text" name="city" id="city" placeholder="City" pattern ="^[a-zA-Z ]*$" title ="Please type alphabets only"/>
-        </FormGroup>
-        <FormGroup>
-          <Label for="country">Country</Label>
-          <Input type="text" name="country" id="country" placeholder="Country" pattern ="^[a-zA-Z ]*$" title ="Please type alphabets only"/>
-        </FormGroup>
-     
-        <Button type="submit">Submit</Button>
+        
+        {labels.map(label => { return(
+          <FormGroup key={label}>
+          <Label for={label}>{label}</Label>
+          <Input type="text" name={label} id={label} placeholder={label} required/>
+        </FormGroup>)
+        })
+      }
+       
+      <FormGroup className = {"text-center"}>
+      <Button type="submit" >Submit</Button>
+      </FormGroup>
       </Form>
+     
+   
+      
     );
   }
 
@@ -25,20 +40,28 @@ class Home extends Component {
 
     const weatherFormData = new FormData (event.target);
    
-    const city = weatherFormData.get('city');
-    const country = weatherFormData.get('country');
+    const latitude = weatherFormData.get('Latitude');
+    const longitude = weatherFormData.get('Longitude');
     const openWeatherRequest = new XMLHttpRequest();
-    const apiKey = "1a331de66eeace55d2a3200ffc35e52e"
-
-    openWeatherRequest.open('GET', `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}`, true)
-
-    openWeatherRequest.onload = function (){
+    const apiKey = "1c6c28d74a5ed7917aa2cc1522e76d68"
+    
+    openWeatherRequest.open('GET', `http://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${apiKey}/${latitude},${longitude}`, true)
+    
+    openWeatherRequest.onload =  ()=>{
         const openWeatherResponse = JSON.parse(openWeatherRequest.response);
-        console.log(openWeatherResponse);
+        this.setState({"weather":openWeatherResponse})
+        this.props.updateWeather(openWeatherResponse)
     }
 
     openWeatherRequest.send()
   }
+
+
+
+
+
+
+
 }
 
 export default Home;
