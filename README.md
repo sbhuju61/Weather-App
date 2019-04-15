@@ -5,7 +5,7 @@ Weather App built using Reactjs
 * React
 * Dark Sky Api
 
-STEPS
-npm install
-npm run dev
-visit http://localhost:3000
+##### STEPS
+* npm install
+* npm run dev
+* visit http://localhost:3000
