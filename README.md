@@ -1,11 +1,15 @@
-# Weather-App (Development In Progress)
-Weather App built using Reactjs
+# Weather-App
+Get the latest weather by typing your latitude and longitude. 
 
-##### Tech Stack
+### Info
+* Fetched weather data using RESTFUL API from the Dark Sky API.
+* Used CSS3 and Media Queries for responsive website.
+
+## Tech Stack
 * React
 * Dark Sky Api
 
-##### STEPS
+## STEPS
 * npm install
 * npm run dev
 * visit http://localhost:3000
