@@ -45,7 +45,7 @@ class Home extends Component {
     const openWeatherRequest = new XMLHttpRequest();
     const apiKey = "1c6c28d74a5ed7917aa2cc1522e76d68"
     
-    openWeatherRequest.open('GET', `http://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${apiKey}/${latitude},${longitude}`, true)
+    openWeatherRequest.open('GET', `https://cors-anywhere.herokuapp.com/https://api.darksky.net/forecast/${apiKey}/${latitude},${longitude}`, true)
     
     openWeatherRequest.onload =  ()=>{
         const openWeatherResponse = JSON.parse(openWeatherRequest.response);
